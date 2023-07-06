@@ -1,5 +1,6 @@
 .body {
     font-size: 20px;
+    width: 100%;
 }
 
 .top {
@@ -34,12 +35,17 @@
 }
 
 .welcome {
+    display: flex;
     background-color: rgb(166, 205, 231);
     height: 250px;
     font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.welcome_text {
+    text-align: center
 }
 
 .main_1 {
