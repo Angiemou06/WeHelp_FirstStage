@@ -1,0 +1,425 @@
+.body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.I1 {
+    margin-right: 20px;
+}
+
+.I2 {
+    margin-right: 20px;
+}
+
+.I3 {
+    margin-right: 20px;
+}
+
+.I4 {
+    margin-right: 10px;
+}
+
+.welcome {
+    display: flex;
+    background-color: rgb(166, 205, 231);
+    height: 250px;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome_text {
+    text-align: center
+}
+
+.main_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: Space-between;
+    width: 1200px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 20px;
+}
+
+.main_3_1 {
+    display: flex;
+    height: 50px;
+    background-color: rgb(166, 205, 231);
+    width: 32.22%;
+}
+
+.main_3_2 {
+    display: flex;
+    height: 50px;
+    background-color: rgb(166, 205, 231);
+    width: 32.22%;
+}
+
+.main_3_3 {
+    display: flex;
+    height: 50px;
+    background-color: rgb(166, 205, 231);
+    width: 32.22%;
+}
+
+.main_4 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main_5 {
+    display: grid;
+    width: 1200px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+
+.grid_1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_3 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_4 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 4/5;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_5 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 5/6;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_6 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 6/7;
+    grid-row: 1/2;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_7 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_8 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_9 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_10 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 4/5;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_11 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 5/6;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.grid_12 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column: 6/7;
+    grid-row: 2/3;
+    background-color: rgb(166, 205, 231);
+}
+
+.img_top {
+    height: 100%;
+    width: 80px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.name{
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.Promotion {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.hamberger {
+    display: none;
+}
+
+@media (max-width:1200px) {
+    .main_2 {
+        width: 90%;
+    }
+
+    .main_3_1 {
+        /* width: 45%; */
+        width: calc(50% - 10px);
+    }
+
+    .main_3_2 {
+        /* width: 45%; */
+        width: calc(50% - 10px);
+    }
+
+    .main_3_3 {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .main_4 {
+        margin-top: 90px;
+    }
+
+    .main_5 {
+        width: 90%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .grid_1 {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .grid_2 {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    .grid_3 {
+        grid-column: 3/4;
+        grid-row: 1/2;
+    }
+
+    .grid_4 {
+        grid-column: 4/5;
+        grid-row: 1/2;
+    }
+
+    .grid_5 {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .grid_6 {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    .grid_7 {
+        grid-column: 3/4;
+        grid-row: 2/3;
+    }
+
+    .grid_8 {
+        grid-column: 4/5;
+        grid-row: 2/3;
+    }
+
+    .grid_9 {
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+
+    .grid_10 {
+        grid-column: 2/3;
+        grid-row: 3/4;
+    }
+
+    .grid_11 {
+        grid-column: 3/4;
+        grid-row: 3/4;
+    }
+
+    .grid_12 {
+        grid-column: 4/5;
+        grid-row: 3/4;
+    }
+
+    .img_top {
+        height: 50px;
+        width: 80px;
+    }
+}
+
+@media (max-width:600px) {
+    .main_2 {
+        width: 90%;
+    }
+
+    .main_3_1 {
+        width: 100%;
+    }
+
+    .main_3_2 {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .main_3_3 {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .main_4 {
+        margin-top: 110px;
+    }
+
+    .main_5 {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+
+    .grid_1 {
+        width: 100%;
+    }
+
+    .grid_2 {
+        width: 100%;
+    }
+
+    .grid_3 {
+        width: 100%;
+    }
+
+    .grid_4 {
+        width: 100%;
+    }
+
+    .grid_5 {
+        width: 100%;
+    }
+
+    .grid_6 {
+        width: 100%;
+    }
+
+    .grid_7 {
+        width: 100%;
+    }
+
+    .grid_8 {
+        width: 100%;
+    }
+
+    .grid_9 {
+        width: 100%;
+    }
+
+    .grid_10 {
+        width: 100%;
+    }
+
+    .grid_11 {
+        width: 100%;
+    }
+
+    .grid_12 {
+        width: 100%;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hamberger {
+        display: block;
+        margin-right: 6px;
+    }
+
+}
