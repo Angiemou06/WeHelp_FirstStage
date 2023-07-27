@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>error</title>
+    <title>square</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homeStyle.css') }}">
 </head>
 <body>
     <header>
         <div>
-            失敗頁面
+            正整數平方計算結果
         </div>
     </header>
     <main>
-        {% if error_msg %}
-            <div class="error">
-                {{error_msg}}
-            </div>
-        {% else %}
-            <div class="error">
-                Please enter username and password.
-            </div>
-        {% endif %}
+        
+        <div class="error">
+            {{ data }}
+        </div>
+        
         <a href="/" class="back">返回登入頁面</a>
     </main>
+    
 </body>
 </html>

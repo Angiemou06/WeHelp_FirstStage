@@ -9,20 +9,16 @@
 <body>
     <header>
         <div>
-            失敗頁面
+            歡迎光臨，這是會員頁
         </div>
     </header>
     <main>
-        {% if error_msg %}
-            <div class="error">
-                {{error_msg}}
-            </div>
-        {% else %}
-            <div class="error">
-                Please enter username and password.
-            </div>
-        {% endif %}
-        <a href="/" class="back">返回登入頁面</a>
+        <div class="error">
+            恭喜您，成功登入系統
+        </div>
+        <div>
+            <a href="/signout" class="back">登出系統</a>
+        </div>
     </main>
 </body>
 </html>
