@@ -15,9 +15,7 @@ def login():
     name = request.form["user"]
     password = request.form["password"]
     confirm = request.form.get("confirm")
-    if (confirm != "on"):
-        return redirect("/")
-    elif (name == "" or  password == ""):
+    if (name == "" or  password == ""):
         return redirect("/error")
     elif (name == "test" and password == "test"):
         session["user"] = name
@@ -44,7 +42,6 @@ def signout():
 
 @app.route("/square/<int:number>")
 def square(number):
-
     if number > 0:
         result = number * number
         return render_template("square.html", data=result)
