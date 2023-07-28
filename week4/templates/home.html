@@ -14,7 +14,7 @@
     </header>
     <main>
         <h1>登入系統</h1>
-        <form action="/signin" method="POST"> 
+        <form action="/signin" method="POST" onsubmit="return check()"> 
             <div class="user">
                 <div class="text">帳號</div> 
                 <input type="text" name="user" />
@@ -27,16 +27,16 @@
                 <div class="text">同意條款</div>
                 <input type="checkbox" id="confirm" name="confirm"/>
             </div>
-            <button id="checkButton">登入</button>
+            <button>登入</button>
         </form>
         <hr/>
         <h1>計算正整數的平方</h1>
-        <form> 
+        <form onsubmit="return checkNumber()"> 
             <div class="number">
                 <div class="text">正整數</div> 
-                <input type="text" id="number"/>
+                <input type="number" id="number" required min=1/>
                 </div>
-            <button id="calButton" type="button">計算</button>
+            <button  type="submit">計算</button>
         </form>
     </main>
     <script src="static/check.js"></script>
