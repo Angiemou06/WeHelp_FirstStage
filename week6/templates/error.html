@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>error</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homeStyle.css') }}">
+</head>
+<body>
+    <header>
+        <div>
+            失敗頁面
+        </div>
+    </header>
+    <main>
+        {% if error_msg %}
+            <div class="error">
+                {{error_msg}}
+            </div>
+        {% else %}
+            <div class="error">
+                Please enter username and password.
+            </div>
+        {% endif %}
+        <a href="/" class="back">返回登入頁面</a>
+    </main>
+</body>
+</html>
