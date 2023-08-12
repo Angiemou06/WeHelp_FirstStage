@@ -36,9 +36,9 @@ def signup():
         return redirect("/")
 
 @app.route("/signin", methods=["POST"])
-def login():
-    name = request.form["user"]
-    password = request.form["password"]
+def signin():
+    name = request.form["account_signin"]
+    password = request.form["password_signin"]
     con = mysql.connector.connect(
         user="root",
         password="123456",
@@ -46,25 +46,14 @@ def login():
         database="website"
     )
     cursor=con.cursor()
-    cursor.execute("SELECT * from member")
-    data=cursor.fetchall()
-    data_id=[]
-    data_name=[]
-    data_username=[]
-    data_password=[]
-    for text in data:
-        data_id.append(text[0])
-        data_name.append(text[1])
-        data_username.append(text[2])
-        data_password.append(text[3])
-    con.commit()
+    cursor.execute("SELECT id,name,username FROM member WHERE username=%s AND password=%s",(name,password))
+    result = cursor.fetchone()
     con.close()
-    for i in range(0,len(data_username)):
-        if (name == data_username[i] and password == data_password[i]):
-            session["id"] = data_id[i]
-            session["user"] = data_name[i]
-            session["username"] = data_username[i]
-            return redirect("/member")
+    if result:
+        session["id"] = result[0]
+        session["user"] =result[1]
+        session["username"]=result[2]
+        return redirect("/member")
     else:
         return redirect("/error?message=帳號、或密碼輸入錯誤")
 
@@ -78,6 +67,7 @@ def member():
     if "user" in session:
         name = session["user"]
         username = session["username"]
+        id = session["id"]
         con = mysql.connector.connect(
             user="root",
             password="123456",
@@ -85,28 +75,26 @@ def member():
             database="website"
         )
         cursor = con.cursor()
-        cursor.execute("SELECT id,member_id,content FROM message")
+        cursor.execute("SELECT message.content FROM message INNER JOIN member ON message.member_id=member.id WHERE message.member_id=%s",(id,))
         result = cursor.fetchall()
-        message_id=[row[0] for row in result]
-        content = [row[2] for row in result]
-        member_id = [row[1] for row in result]
+        signin_member_content=[row[0] for row in result]
 
-        cursor.execute("SELECT id FROM member WHERE username=%s",(username,))
-        id = cursor.fetchone()[0]
-        data_number = len(content)
-        coefficient = [0] * data_number
-        for i in range(0,data_number):
-            if member_id[i] == id:
-                coefficient[i] = 1
-
-        message_name_list=[]
-        for i in member_id:
-            cursor.execute("SELECT name FROM member WHERE id=%s",(i,))
-            message_name =  cursor.fetchone()[0]
-            message_name_list.append(message_name)
+        cursor.execute("SELECT message.id,member.name,message.content FROM message INNER JOIN member ON message.member_id=member.id")
+        result = cursor.fetchall()
+        all_content_id=[row[0] for row in result]
+        all_content_neme=[row[1] for row in result]
+        all_content = [row[2] for row in result]
         con.commit()
         con.close()
-        return render_template("member.html" ,us_name=name, message_id=message_id, content=content, message_name=message_name_list, coefficient=coefficient)
+
+        coefficient=[]
+        for text in all_content:
+            if text in signin_member_content:
+                coefficient.append(1)
+            else:
+                coefficient.append(0)
+        
+        return render_template("member.html" ,us_name=name, all_content_neme=all_content_neme, all_content=all_content, all_content_id=all_content_id, coefficient=coefficient)
     else:
         return redirect("/")
     
@@ -137,7 +125,7 @@ def signout():
 
 @app.route("/deleteMessage", methods=["POST"])
 def deleteMessage():
-    message_id = request.form["message_id"]
+    delete_message_id = request.form["delete_message_id"]
     con = mysql.connector.connect(
         user="root",
         password="123456",
@@ -145,7 +133,7 @@ def deleteMessage():
         database="website"
     )
     cursor = con.cursor()
-    cursor.execute("DELETE FROM message WHERE id=%s", (message_id,))
+    cursor.execute("DELETE FROM message WHERE id=%s", (delete_message_id,))
     con.commit()
     con.close()
     return redirect("/member")
