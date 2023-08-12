@@ -34,11 +34,11 @@
         <hr/>
         <div class="message_board">
             <div>
-                {% for i in range(0,content|length) %}
-                    <strong>{{message_name[i]}}：</strong>{{content[i]}}
-                    {% if coefficient[i]==1 %}
+                {% for i in range(0,all_content_neme|length) %}
+                    <strong>{{all_content_neme[i]}}：</strong>{{all_content[i]}}
+                    {% if coefficient[i] == 1 %}
                     <form style="display: inline-block;" action="/deleteMessage" method="post" onsubmit="return confirmDelete()">
-                        <input type="hidden" name="message_id" value="{{message_id[i]}}">
+                        <input type="hidden" name="delete_message_id" value="{{all_content_id[i]}}">
                         <button type="submit">X</button>
                     </form>
                     {% endif %}
