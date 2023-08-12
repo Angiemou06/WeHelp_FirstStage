@@ -10,19 +10,25 @@ app.secret_key = "It's a secret!"
 @app.route("/")
 def index():
     return render_template("home.html")
-
+def connect_to_database():
+    try:
+        con = mysql.connector.connect(
+            user="root",
+            password="123456",
+            host="localhost",
+            database="website"
+        )
+        cursor = con.cursor()
+        return con, cursor
+    except:
+        return None, None
+    
 @app.route("/signup",methods=["POST"])
 def signup():
     name = request.form["name"]
     account = request.form["account"]
     password = request.form["password"]
-    con = mysql.connector.connect(
-        user="root",
-        password="123456",
-        host="localhost",
-        database="website"
-    )
-    cursor = con.cursor()
+    con, cursor = connect_to_database()
     cursor.execute("SELECT id FROM member WHERE username = %s", (account,))
     existing_user = cursor.fetchone()
     if existing_user is not None:
@@ -39,13 +45,7 @@ def signup():
 def signin():
     name = request.form["account_signin"]
     password = request.form["password_signin"]
-    con = mysql.connector.connect(
-        user="root",
-        password="123456",
-        host="localhost",
-        database="website"
-    )
-    cursor=con.cursor()
+    con, cursor = connect_to_database()
     cursor.execute("SELECT id,name,username FROM member WHERE username=%s AND password=%s",(name,password))
     result = cursor.fetchone()
     con.close()
@@ -66,30 +66,20 @@ def error():
 def member():
     if "user" in session:
         name = session["user"]
-        username = session["username"]
         id = session["id"]
-        con = mysql.connector.connect(
-            user="root",
-            password="123456",
-            host="localhost",
-            database="website"
-        )
-        cursor = con.cursor()
-        cursor.execute("SELECT message.content FROM message INNER JOIN member ON message.member_id=member.id WHERE message.member_id=%s",(id,))
+        con, cursor = connect_to_database()
+        cursor.execute("SELECT member.id,message.id,member.name,message.content FROM message INNER JOIN member ON message.member_id=member.id")
         result = cursor.fetchall()
-        signin_member_content=[row[0] for row in result]
-
-        cursor.execute("SELECT message.id,member.name,message.content FROM message INNER JOIN member ON message.member_id=member.id")
-        result = cursor.fetchall()
-        all_content_id=[row[0] for row in result]
-        all_content_neme=[row[1] for row in result]
-        all_content = [row[2] for row in result]
+        all_member_id = [row[0] for row in result]
+        all_content_id=[row[1] for row in result]
+        all_content_neme=[row[2] for row in result]
+        all_content = [row[3] for row in result]
         con.commit()
         con.close()
 
         coefficient=[]
-        for text in all_content:
-            if text in signin_member_content:
+        for i in range(0,len(all_member_id)):
+            if all_member_id[i] == id:
                 coefficient.append(1)
             else:
                 coefficient.append(0)
@@ -104,13 +94,7 @@ def createMessage():
     if request.method == "POST":
         text = request.form["message"]
         if text:
-            con = mysql.connector.connect(
-                user="root",
-                password="123456",
-                host="localhost",
-                database="website"
-            )
-            cursor=con.cursor()
+            con, cursor = connect_to_database()
             cursor.execute("INSERT INTO message(member_id,content) VALUES (%s,%s)",(id, text))
             con.commit()
             con.close()
@@ -126,13 +110,7 @@ def signout():
 @app.route("/deleteMessage", methods=["POST"])
 def deleteMessage():
     delete_message_id = request.form["delete_message_id"]
-    con = mysql.connector.connect(
-        user="root",
-        password="123456",
-        host="localhost",
-        database="website"
-    )
-    cursor = con.cursor()
+    con, cursor = connect_to_database()
     cursor.execute("DELETE FROM message WHERE id=%s", (delete_message_id,))
     con.commit()
     con.close()
