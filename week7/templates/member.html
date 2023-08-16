@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homeStyle.css') }}">
+</head>
+<body>
+    <header>
+        <div>
+            歡迎光臨，這是會員頁
+        </div>
+    </header>
+    <main>
+        <div class="error">
+            {{us_name}}，歡迎登入系統
+        </div>
+        <div>
+            <a href="/signout" class="back">登出系統</a>
+        </div>
+        <hr/>
+        <div>
+            <h2>查詢會員姓名</h2>
+        </div>
+        <div class="search">
+            <input type="text" id="search" name="search" />
+            <button class="button" onclick="getData()">查詢</button>
+        </div>
+        <div id="result" class="result"></div>
+        <div>
+            <h2>更新我的姓名</h2>
+        </div>
+        <div class="update">
+            <input type="text" id="update" name="update" />
+            <button class="button" onclick="updateData()">更新</button>
+        </div>
+        <div id="result2" class="result"></div>
+        
+    </main>
+    <script src="static/check.js"></script>
+</body>
+</html>

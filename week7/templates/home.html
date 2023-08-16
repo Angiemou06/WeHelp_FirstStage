@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homeStyle.css') }}">
+</head>
+<body>
+    <header>
+        <div>
+            歡迎光臨，請註冊登入系統
+        </div>
+    </header>
+    <main>
+        <h1>註冊帳號</h1>
+        <form action="/signup" method="POST" onsubmit="return check()"> 
+            <div class="name">
+                <div class="text">姓名</div> 
+                <input type="text" id="name" name="name" />
+            </div>
+            <div class="account">
+                <div class="text">帳號</div> 
+                <input type="text" id="account" name="account" />
+            </div>
+            <div class="password">
+                <div class="text">密碼</div>
+                <input type="password" id="password" name="password" />
+            </div>
+        <button>註冊</button>
+        </form>
+        <hr/>
+        <h1>登入系統</h1>
+        <form action="/signin" method="POST" onsubmit="return check2()"> 
+            <div class="account">
+                <div class="text">帳號</div> 
+                <input type="text" id="account_signin" name="account_signin" />
+            </div>
+            <div class="password">
+                <div class="text">密碼</div>
+                <input type="password" id="password_signin" name="password_signin" />
+            </div>
+        <button>登入</button>
+    </main>
+    <script src="static/check.js"></script>
+</body>
+</html>
